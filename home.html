@@ -100,7 +100,7 @@
 
     <!-- Rekomendasi Program Section -->
     <section class="px-[156px] mt-[7%]">
-        <div class="gradient-border2 w-full flex items-center justify-center p-10">
+        <div class="gradient-border2 w-full flex justify-center p-10">
             <div class="absolute rounded-[8px] w-full">
                 <img class="filter blur-2xl w-full" src="asset/rekomendasi/rekom-bg.svg" alt="">
             </div>
@@ -118,24 +118,91 @@
                         <label for="merasa" class="text-[#1E2223] text-[14px]">Aku merasa bahwa</label>
                         <select name="merasa" id="" class="border border-[#CBCECF] rounded-[4px] min-w-[408px] px-[12px] py-[8px] text-[14px] text-[#6C6F70]">
                             <option value="">Pilih jawaban</option>
-                            <option value="">Bingung cari pengalaman pertama di industri</option>
-                            <option value="">Masih cari passion yang cocok, nih</option>
-                            <option value="">Mau punya portofolio</option>
-                            <option value="">Merasa salah jurusan</option>
-                            <option value="">Bingung untuk membangun karir</option>
-                            <option value="">Cari magang yang auto lolos</option>
-                            <option value="">Mau punya mentor khusus untuk konsultasi karir</option>
-                            <option value="">Mau ngelamar kerja tapi ga punya skill yang mumpuni</option>
+                            <option value="1">Bingung cari pengalaman pertama di industri</option>
+                            <option value="2">Masih cari passion yang cocok, nih</option>
+                            <option value="3">Mau punya portofolio</option>
+                            <option value="4">Merasa salah jurusan</option>
+                            <option value="5">Bingung untuk membangun karir</option>
+                            <option value="6">Cari magang yang auto lolos</option>
+                            <option value="7">Mau punya mentor khusus untuk konsultasi karir</option>
+                            <option value="8">Mau ngelamar kerja tapi ga punya skill yang mumpuni</option>
                         </select>
                     </div>
                     <div class="flex flex-col gap-[5px]">
                         <label for="minat" class="text-[#1E2223] text-[14px]">Bidang pekerjaan yang diminati</label>
                         <select name="minat" id="" class="border border-[#CBCECF] rounded-[4px] min-w-[408px] px-[12px] py-[8px] text-[14px] text-[#6C6F70]">
                             <option value="">Pilih bidang atau role</option>
-                            <option value="">Teknologi Informasi (IT)</option>
-                            <option value="">Marketing</option>
-                            <option value="">Creative</option>
+                            <option value="1">Teknologi Informasi (IT)</option>
+                            <option value="2">Marketing</option>
+                            <option value="3">Creative</option>
                         </select>
+                    </div>
+                </div>
+                <div class="program-rekom flex flex-col w-[76%] gap-[16px] hidden">
+                    <div>
+                        <p class="text-[16px] text-[#1E2223] font-semibold">Rekomendasi Program</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-[37px]">
+                        <div class="card-rekom max-w-[264px]" data-merasa="1,2,3,4,5,6,7,8" data-minat="3">
+                            <div class="flex items-center">
+                                <img class="rounded-t-[8px]" src="asset/rekomendasi/rekom1.svg" alt="">
+                            </div>
+                            <div class="p-[16px] flex flex-col gap-[14px]">
+                                <h1 class="py-[4px] px-[8px] w-fit bg-[#FFF9DF] border border-[#8F7200] text-[#8F7200] font-semibold text-[12px] rounded-[4px]">Project Based Internship</h1>
+                                <div>
+                                    <div class="flex gap-[5px]">
+                                        <img src="asset/rekomendasi/video.svg" alt="">
+                                        <h1 class="text-[#1E2223] text-[16px] font-semibold">Video Editor</h1>
+                                    </div>
+                                    <p class="text-[#6C6F70] text-[14px]">Program pilihan untuk magang menjadi seorang graphic designer dengan pilihan durasi maksimal 3 bulan.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-rekom max-w-[264px]" data-merasa="1,2,3,4,5,6,7,8" data-minat="1,3">
+                            <div class="flex items-center">
+                                <img class="rounded-t-[8px]" src="asset/rekomendasi/rekom2.svg" alt="">
+                            </div>
+                            <div class="p-[16px] flex flex-col gap-[14px]">
+                                <h1 class="py-[4px] px-[8px] w-fit bg-[#FFF9DF] border border-[#8F7200] text-[#8F7200] font-semibold text-[12px] rounded-[4px]">Project Based Internship</h1>
+                                <div>
+                                    <div class="flex gap-[5px]">
+                                        <img src="asset/rekomendasi/uiux.svg" alt="">
+                                        <h1 class="text-[#1E2223] text-[16px] font-semibold">UIUX Designerr</h1>
+                                    </div>
+                                    <p class="text-[#6C6F70] text-[14px]">Program pilihan untuk magang menjadi video editor dalam kurun waktu 3 bulan.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-rekom max-w-[264px]" data-merasa="1,2,3,4,5,6,7,8" data-minat="2,3">
+                            <div class="flex items-center">
+                                <img class="rounded-t-[8px]" src="asset/rekomendasi/rekom3.svg" alt="">
+                            </div>
+                            <div class="p-[16px] flex flex-col gap-[14px]">
+                                <h1 class="py-[4px] px-[8px] w-fit bg-[#FFF9DF] border border-[#8F7200] text-[#8F7200] font-semibold text-[12px] rounded-[4px]">Project Based Internship</h1>
+                                <div>
+                                    <div class="flex gap-[5px]">
+                                        <img src="asset/rekomendasi/graphic.svg" alt="">
+                                        <h1 class="text-[#1E2223] text-[16px] font-semibold">Graphic Designer</h1>
+                                    </div>
+                                    <p class="text-[#6C6F70] text-[14px]">Program pilihan untuk magang menjadi seorang graphic designer dengan pilihan durasi maksimal 3 bulan.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-rekom max-w-[264px]" data-merasa="1,2,3,4,5,6,7,8" data-minat="1">
+                            <div class="flex items-center">
+                                <img class="rounded-t-[8px]" src="asset/rekomendasi/rekom4.svg" alt="">
+                            </div>
+                            <div class="p-[16px] flex flex-col gap-[14px]">
+                                <h1 class="py-[4px] px-[8px] w-fit bg-[#FFF9DF] border border-[#8F7200] text-[#8F7200] font-semibold text-[12px] rounded-[4px]">Project Based Internship</h1>
+                                <div>
+                                    <div class="flex gap-[5px]">
+                                        <img src="asset/rekomendasi/webdev.svg" alt="">
+                                        <h1 class="text-[#1E2223] text-[16px] font-semibold">WebDev Specialist</h1>
+                                    </div>
+                                    <p class="text-[#6C6F70] text-[14px]">Program pilihan untuk magang menjadi seorang web developer dalam kurun waktu 6 bulan.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
