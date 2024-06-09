@@ -1,3 +1,46 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "job_connector";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
+}
+
+// Ambil data dari tabel mitra
+$sql = "SELECT * FROM mitra";
+$result = $conn->query($sql);
+
+$mitra_data = [];
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $mitra_data[] = $row;
+    }
+} else {
+    echo "Tidak ada data mitra.";
+}
+
+// Ambil data dari tabel rekomendasi
+$sql = "SELECT * FROM rekomendasi";
+$result = $conn->query($sql);
+
+$rekomendasi_data = [];
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $rekomendasi_data[] = $row;
+    }
+} else {
+    echo "Tidak ada data rekomendasi.";
+}
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,12 +131,9 @@
     <!-- Mitra Section -->
     <section class="flex w-full flex-col items-center justify-center gap-[28px] mt-[30px]">
         <div class="flex w-full items-center justify-center gap-[32px]">
-            <div><img src="asset/mitra/mitra1.svg" alt=""></div>
-            <div><img src="asset/mitra/mitra2.svg" alt=""></div>
-            <div><img src="asset/mitra/mitra3.svg" alt=""></div>
-            <div><img src="asset/mitra/mitra4.svg" alt=""></div>
-            <div><img src="asset/mitra/mitra5.svg" alt=""></div>
-            <div><img src="asset/mitra/mitra6.svg" alt=""></div>
+            <?php foreach ($mitra_data as $mitra): ?>
+                <div><img src="<?php echo $mitra['foto_mitra']; ?>" alt="<?php echo $mitra['nama_mitra']; ?>"></div>
+            <?php endforeach; ?>
         </div>
         <p class="text-[16px] text-[#6C6F70]">Daftarkan dirimu, raih kesempatan untuk disalurkan ke company partner kami bersama Cakap</p>
     </section>
@@ -143,66 +183,23 @@
                         <p class="text-[16px] text-[#1E2223] font-semibold">Rekomendasi Program</p>
                     </div>
                     <div class="grid grid-cols-3 gap-[37px]">
-                        <div class="card-rekom max-w-[264px]" data-merasa="1,2,3,4,5,6,7,8" data-minat="3">
+                        <?php foreach ($rekomendasi_data as $rekom): ?>
+                        <div class="card-rekom max-w-[264px]" data-merasa="<?php echo $rekom['data_merasa']?>" data-minat="<?php echo $rekom['data_minat']?>">
                             <div class="flex items-center">
-                                <img class="rounded-t-[8px]" src="asset/rekomendasi/rekom1.svg" alt="">
+                                <img class="rounded-t-[8px]" src="<?php echo $rekom['foto_program']; ?>" alt="<?php echo $rekom['nama_program']; ?>">
                             </div>
                             <div class="p-[16px] flex flex-col gap-[14px]">
-                                <h1 class="py-[4px] px-[8px] w-fit bg-[#FFF9DF] border border-[#8F7200] text-[#8F7200] font-semibold text-[12px] rounded-[4px]">Project Based Internship</h1>
+                                <h1 class="py-[4px] px-[8px] w-fit bg-[#FFF9DF] border border-[#8F7200] text-[#8F7200] font-semibold text-[12px] rounded-[4px]"><?php echo $rekom['tipe_program']; ?></h1>
                                 <div>
                                     <div class="flex gap-[5px]">
-                                        <img src="asset/rekomendasi/video.svg" alt="">
-                                        <h1 class="text-[#1E2223] text-[16px] font-semibold">Video Editor</h1>
+                                        <img src="<?php echo $rekom['icon_program']; ?>" alt="">
+                                        <h1 class="text-[#1E2223] text-[16px] font-semibold"><?php echo $rekom['nama_program']; ?></h1>
                                     </div>
-                                    <p class="text-[#6C6F70] text-[14px]">Program pilihan untuk magang menjadi seorang graphic designer dengan pilihan durasi maksimal 3 bulan.</p>
+                                    <p class="text-[#6C6F70] text-[14px]"><?php echo $rekom['deskripsi_program']; ?></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-rekom max-w-[264px]" data-merasa="1,2,3,4,5,6,7,8" data-minat="1,3">
-                            <div class="flex items-center">
-                                <img class="rounded-t-[8px]" src="asset/rekomendasi/rekom2.svg" alt="">
-                            </div>
-                            <div class="p-[16px] flex flex-col gap-[14px]">
-                                <h1 class="py-[4px] px-[8px] w-fit bg-[#FFF9DF] border border-[#8F7200] text-[#8F7200] font-semibold text-[12px] rounded-[4px]">Project Based Internship</h1>
-                                <div>
-                                    <div class="flex gap-[5px]">
-                                        <img src="asset/rekomendasi/uiux.svg" alt="">
-                                        <h1 class="text-[#1E2223] text-[16px] font-semibold">UIUX Designerr</h1>
-                                    </div>
-                                    <p class="text-[#6C6F70] text-[14px]">Program pilihan untuk magang menjadi video editor dalam kurun waktu 3 bulan.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-rekom max-w-[264px]" data-merasa="1,2,3,4,5,6,7,8" data-minat="2,3">
-                            <div class="flex items-center">
-                                <img class="rounded-t-[8px]" src="asset/rekomendasi/rekom3.svg" alt="">
-                            </div>
-                            <div class="p-[16px] flex flex-col gap-[14px]">
-                                <h1 class="py-[4px] px-[8px] w-fit bg-[#FFF9DF] border border-[#8F7200] text-[#8F7200] font-semibold text-[12px] rounded-[4px]">Project Based Internship</h1>
-                                <div>
-                                    <div class="flex gap-[5px]">
-                                        <img src="asset/rekomendasi/graphic.svg" alt="">
-                                        <h1 class="text-[#1E2223] text-[16px] font-semibold">Graphic Designer</h1>
-                                    </div>
-                                    <p class="text-[#6C6F70] text-[14px]">Program pilihan untuk magang menjadi seorang graphic designer dengan pilihan durasi maksimal 3 bulan.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-rekom max-w-[264px]" data-merasa="1,2,3,4,5,6,7,8" data-minat="1">
-                            <div class="flex items-center">
-                                <img class="rounded-t-[8px]" src="asset/rekomendasi/rekom4.svg" alt="">
-                            </div>
-                            <div class="p-[16px] flex flex-col gap-[14px]">
-                                <h1 class="py-[4px] px-[8px] w-fit bg-[#FFF9DF] border border-[#8F7200] text-[#8F7200] font-semibold text-[12px] rounded-[4px]">Project Based Internship</h1>
-                                <div>
-                                    <div class="flex gap-[5px]">
-                                        <img src="asset/rekomendasi/webdev.svg" alt="">
-                                        <h1 class="text-[#1E2223] text-[16px] font-semibold">WebDev Specialist</h1>
-                                    </div>
-                                    <p class="text-[#6C6F70] text-[14px]">Program pilihan untuk magang menjadi seorang web developer dalam kurun waktu 6 bulan.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
